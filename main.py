@@ -12,7 +12,10 @@ def score(board):
         finalScore += (pieces.count(i.lower())*pieceScores[i.lower()])
     for i in pieceScores:
         finalScore -= (pieces.count(i)*pieceScores[i])
-    finalScore += len(list(board.legal_moves))
+    if board.turn:
+        finalScore += len(list(board.legal_moves))/10
+    else:
+        finalScore -= len(list(board.legal_moves))/10
     return finalScore
 
 def search(board, depth, isWhite):
@@ -32,12 +35,12 @@ def search(board, depth, isWhite):
 
 chessBoard = chess.Board()
 
-for i in range(5):
-    nextMove = search(chessBoard,2,True)[1]
+for i in range(10):
+    nextMove = search(chessBoard,3,True)[1]
     chessBoard.push(nextMove)
     print(chessBoard)
     print(score(chessBoard))
-    nextMove = search(chessBoard, 2, False)[1]
+    nextMove = search(chessBoard, 3, False)[1]
     chessBoard.push(nextMove)
     print(chessBoard)
     print(score(chessBoard))
