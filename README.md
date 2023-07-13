@@ -1,2 +1,2 @@
-# beta-one
-A chess engine to challenge (and beat) StockYu
+# ShallowMind Beta-One
+A minimax chess engine to challenge (and beat) StockYu
